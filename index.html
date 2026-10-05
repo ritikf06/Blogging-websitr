@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BlogSphere | By Ritik</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f7f5fa;
+            color: #29243a;
+            transition: 0.3s;
+        }
+
+        /* HEADER */
+
+        header {
+            height: 58px;
+            background: #21143d;
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ff7ac8;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: white;
+            font-size: 12px;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #ff7ac8;
+        }
+
+        /* HERO */
+
+        .hero {
+            width: 100%;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(38, 18, 65, 0.62),
+                    rgba(92, 38, 122, 0.62)
+                ),
+                url("1000019388.jpg")
+                center center / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .hero button {
+            border: none;
+            background: #ff69b4;
+            color: white;
+            padding: 11px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hero button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* SEARCH */
+
+        .search-section {
+            text-align: center;
+            padding: 17px 5px 8px;
+        }
+
+        #searchBox {
+            width: 55%;
+            max-width: 570px;
+            padding: 11px 17px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 13px;
+            background: white;
+        }
+
+        /* CATEGORIES */
+
+        .categories {
+            text-align: center;
+            padding: 4px 10px 15px;
+        }
+
+        .categories button {
+            border: none;
+            background: #eee8f7;
+            color: #54247c;
+            padding: 8px 15px;
+            margin: 3px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .categories button:hover {
+            background: #54247c;
+            color: white;
+        }
+
+        /* BLOG SECTION */
+
+        .blog-section {
+            width: 90%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 5px 0 32px;
+        }
+
+        .blog-section h2 {
+            text-align: center;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* BLOG CARD */
+
+        .blog-card {
+            background: white;
+            border-radius: 13px;
+            overflow: hidden;
+            box-shadow:
+                0 5px 18px
+                rgba(52, 28, 77, 0.10);
+            transition: 0.25s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* BLOG IMAGE */
+
+        .blog-image {
+            width: 100%;
+            height: 175px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* BLOG CONTENT */
+
+        .blog-content {
+            padding: 14px;
+        }
+
+        .category {
+            display: inline-block;
+            background: #f4d8eb;
+            color: #76235d;
+            padding: 4px 9px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .blog-content h3 {
+            font-size: 17px;
+            line-height: 1.25;
+            margin-bottom: 5px;
+        }
+
+        .author {
+            color: #63358c;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .blog-content p {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.45;
+            margin-bottom: 11px;
+        }
+
+        /* BUTTONS */
+
+        .blog-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .blog-buttons button {
+            border: none;
+            border-radius: 6px;
+            padding: 7px 9px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .read-btn {
+            background: #63358c;
+            color: white;
+        }
+
+        .bookmark-btn {
+            background: #fff1c7;
+            color: #7a5b00;
+        }
+
+        .bookmark-btn:hover {
+            background: #ffe39a;
+        }
+
+        /* CREATE BLOG */
+
+        .form-section {
+            background: #eee8f7;
+            padding: 30px 5%;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        #blogForm {
+            width: 100%;
+            max-width: 620px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 13px;
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,0.07);
+        }
+
+        #blogForm input,
+        #blogForm select,
+        #blogForm textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            outline: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        #blogForm textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        #blogForm button {
+            width: 100%;
+            border: none;
+            border-radius: 7px;
+            padding: 11px;
+            background: #63358c;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #blogForm button:hover {
+            background: #4c276d;
+        }
+
+        /* MODAL */
+
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.68);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 570px;
+            background: white;
+            margin: 8% auto;
+            padding: 25px;
+            border-radius: 14px;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            padding-right: 25px;
+        }
+
+        .close {
+            position: absolute;
+            right: 16px;
+            top: 9px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        #modalText {
+            margin-top: 13px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #21143d;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            font-size: 12px;
+        }
+
+        footer span {
+            color: #ff7ac8;
+        }
+
+        /* DARK MODE */
+
+        body.dark {
+            background: #15121b;
+            color: white;
+        }
+
+        body.dark .blog-card,
+        body.dark #blogForm,
+        body.dark .modal-content {
+            background: #24202c;
+            color: white;
+        }
+
+        body.dark .blog-content p {
+            color: #ccc;
+        }
+
+        body.dark .author {
+            color: #d89cff;
+        }
+
+        body.dark #searchBox,
+        body.dark #blogForm input,
+        body.dark #blogForm textarea,
+        body.dark #blogForm select {
+            background: #302b38;
+            color: white;
+            border-color: #555;
+        }
+
+        body.dark .form-section {
+            background: #1c1822;
+        }
+
+        /* LAPTOP */
+
+        @media (max-width: 1100px) {
+
+            .blog-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-image {
+                height: 180px;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            header {
+                height: auto;
+                padding: 12px 5%;
+                flex-direction: column;
+                gap: 9px;
+            }
+
+            nav {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                height: 240px;
+            }
+
+            .hero h2 {
+                font-size: 29px;
+            }
+
+            #searchBox {
+                width: 90%;
+            }
+
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-section {
+                width: 90%;
+            }
+
+            .blog-image {
+                height: 190px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            Ritik
+            <span>| BlogSphere</span>
+        </div>
+
+        <nav>
+
+            <a href="#home">Home</a>
+
+            <a href="#blogs">Blogs</a>
+
+            <a href="#addBlog">Create Blog</a>
+
+            <a href="javascript:void(0)"
+               onclick="toggleDarkMode()">
+                Dark Mode
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h2>
+                Stories Worth Sharing
+            </h2>
+
+            <p>
+                Welcome to my blog.
+                Discover simple and interesting
+                stories about sports, movies,
+                food and nature.
+            </p>
+
+            <button onclick="scrollToBlogs()">
+                Explore Blogs
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-section">
+
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search blogs..."
+            onkeyup="searchBlogs()">
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <div class="categories">
+
+        <button onclick="filterBlogs('All')">
+            All
+        </button>
+
+        <button onclick="filterBlogs('Sports')">
+            ⚽ Sports
+        </button>
+
+        <button onclick="filterBlogs('Movies')">
+            🎬 Movies
+        </button>
+
+        <button onclick="filterBlogs('Food')">
+            🍔 Food
+        </button>
+
+        <button onclick="filterBlogs('Nature')">
+            🌿 Nature
+        </button>
+
+    </div>
+
+
+    <!-- BLOGS -->
+
+    <section class="blog-section" id="blogs">
+
+        <h2>
+            Latest Stories
+        </h2>
+
+        <div class="blog-container" id="blogContainer">
+
+
+            <!-- SPORTS -->
+
+            <div class="blog-card" data-category="Sports">
+
+                <img
+                    class="blog-image"
+                    src="1000019383.jpg"
+                    alt="Sports">
+
+                <div class="blog-content">
+
+                    <span class="category">
+                        Sports
+                    </span>
+
+                    <h3>
+                        The Importance of Sports
+                    </h3>
+
+                    <div class="author">
+                        By Ritik
+                    </div>
+
+                    <p>
+                        Sports keep us active,
+                        disciplined and connected
+                        with others.
+                    </p>
+
+                    <div class="blog-buttons">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'The Importance of Sports',
+                            'Sports are an important part of a healthy lifestyle. They improve fitness, teamwork, discipline and confidence.'
+                            )">
+
+                            Read More
+
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkBlog(this)">
+
+                            🔖 Bookmark
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOVIES -->
+
+            <div class="blog-card" data-category="Movies">
+
+                <img
+                    class="blog-image"
+                    src="1000019384.jpg"
+                    alt="Movies">
+
+                <div class="blog-content">
+
+                    <span class="category">
+                        Movies
+                    </span>
+
+                    <h3>
+                        The Magic of Movies
+                    </h3>
+
+                    <div class="author">
+                        By Ritik
+                    </div>
+
+                    <p>
+                        Movies entertain us and
+                        allow us to experience
+                        different stories.
+                    </p>
+
+                    <div class="blog-buttons">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'The Magic of Movies',
+                            'Movies are a popular form of entertainment. They tell different stories, introduce us to new ideas and cultures, and help us relax.'
+                            )">
+
+                            Read More
+
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkBlog(this)">
+
+                            🔖 Bookmark
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD -->
+
+            <div class="blog-card" data-category="Food">
+
+                <img
+                    class="blog-image"
+                    src="1000019385.jpg"
+                    alt="Food">
+
+                <div class="blog-content">
+
+                    <span class="category">
+                        Food
+                    </span>
+
+                    <h3>
+                        Food and Its Culture
+                    </h3>
+
+                    <div class="author">
+                        By Ritik
+                    </div>
+
+                    <p>
+                        Food brings people together
+                        and represents different
+                        cultures.
+                    </p>
+
+                    <div class="blog-buttons">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'Food and Its Culture',
+                            'Food is an important part of every culture. Different regions have different ingredients, cooking styles and traditional dishes.'
+                            )">
+
+                            Read More
+
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkBlog(this)">
+
+                            🔖 Bookmark
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NATURE -->
+
+            <div class="blog-card" data-category="Nature">
+
+                <img
+                    class="blog-image"
+                    src="1000019386.jpg"
+                    alt="Nature">
+
+                <div class="blog-content">
+
+                    <span class="category">
+                        Nature
+                    </span>
+
+                    <h3>
+                        Why Nature Matters
+                    </h3>
+
+                    <div class="author">
+                        By Ritik
+                    </div>
+
+                    <p>
+                        Nature gives us clean air,
+                        beautiful places and a
+                        peaceful environment.
+                    </p>
+
+                    <div class="blog-buttons">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'Why Nature Matters',
+                            'Nature is essential for life. Trees, rivers, forests and animals help maintain our environment. Protecting nature is important for our future.'
+                            )">
+
+                            Read More
+
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkBlog(this)">
+
+                            🔖 Bookmark
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CREATE BLOG -->
+
+    <section
+        class="form-section"
+        id="addBlog">
+
+        <h2>
+            Create Your Blog
+        </h2>
+
+        <form id="blogForm">
+
+            <input
+                type="text"
+                id="blogTitle"
+                placeholder="Blog Title"
+                required>
+
+            <select id="blogCategory" required>
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="Sports">
+                    Sports
+                </option>
+
+                <option value="Movies">
+                    Movies
+                </option>
+
+                <option value="Food">
+                    Food
+                </option>
+
+                <option value="Nature">
+                    Nature
+                </option>
+
+            </select>
+
+            <textarea
+                id="blogDescription"
+                placeholder="Write your blog..."
+                required></textarea>
+
+            <button type="submit">
+                Publish Blog
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- MODAL -->
+
+    <div class="modal" id="blogModal">
+
+        <div class="modal-content">
+
+            <span
+                class="close"
+                onclick="closeModal()">
+                &times;
+            </span>
+
+            <h2 id="modalTitle">
+                Blog
+            </h2>
+
+            <p id="modalText"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026
+        <span>Ritik</span>
+        | BlogSphere
+        | All Rights Reserved
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function scrollToBlogs() {
+
+            document
+                .getElementById("blogs")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function toggleDarkMode() {
+
+            document
+                .body
+                .classList
+                .toggle("dark");
+
+        }
+
+
+        function filterBlogs(category) {
+
+            const cards =
+                document.querySelectorAll(".blog-card");
+
+            cards.forEach(function(card) {
+
+                if (
+                    category === "All" ||
+                    card.dataset.category === category
+                ) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        function searchBlogs() {
+
+            const search =
+                document
+                .getElementById("searchBox")
+                .value
+                .toLowerCase();
+
+            const cards =
+                document.querySelectorAll(".blog-card");
+
+            cards.forEach(function(card) {
+
+                const text =
+                    card.innerText.toLowerCase();
+
+                if (text.includes(search)) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        function readBlog(title, text) {
+
+            document
+                .getElementById("modalTitle")
+                .innerText = title;
+
+            document
+                .getElementById("modalText")
+                .innerText = text;
+
+            document
+                .getElementById("blogModal")
+                .style.display = "block";
+
+        }
+
+
+        function closeModal() {
+
+            document
+                .getElementById("blogModal")
+                .style.display = "none";
+
+        }
+
+
+        function bookmarkBlog(button) {
+
+            if (
+                button.innerText.includes("Bookmark")
+            ) {
+
+                button.innerText = "🔖 Bookmarked";
+
+            } else {
+
+                button.innerText = "🔖 Bookmark";
+
+            }
+
+        }
+
+
+        window.onclick = function(event) {
+
+            const modal =
+                document.getElementById("blogModal");
+
+            if (event.target === modal) {
+
+                modal.style.display = "none";
+
+            }
+
+        };
+
+
+        document
+            .getElementById("blogForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const title =
+                    document
+                    .getElementById("blogTitle")
+                    .value;
+
+                const category =
+                    document
+                    .getElementById("blogCategory")
+                    .value;
+
+                const description =
+                    document
+                    .getElementById("blogDescription")
+                    .value;
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "blog-card";
+
+                card.dataset.category = category;
+
+                card.innerHTML = `
+
+                    <img
+                        class="blog-image"
+                        src="1000019388.jpg"
+                        alt="${category}">
+
+                    <div class="blog-content">
+
+                        <span class="category">
+                            ${category}
+                        </span>
+
+                        <h3>
+                            ${title}
+                        </h3>
+
+                        <div class="author">
+                            By Ritik
+                        </div>
+
+                        <p>
+                            ${description}
+                        </p>
+
+                        <div class="blog-buttons">
+
+                            <button
+                                class="read-btn"
+                                onclick="readBlog(
+                                '${title}',
+                                '${description}'
+                                )">
+
+                                Read More
+
+                            </button>
+
+                            <button
+                                class="bookmark-btn"
+                                onclick="bookmarkBlog(this)">
+
+                                🔖 Bookmark
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                document
+                    .getElementById("blogContainer")
+                    .appendChild(card);
+
+                document
+                    .getElementById("blogForm")
+                    .reset();
+
+                alert("Blog published successfully!");
+
+                document
+                    .getElementById("blogs")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            });
+
+    </script>
+
+</body>
+
+</html>
